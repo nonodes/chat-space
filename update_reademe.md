@@ -6,36 +6,55 @@
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|null: false, foreign_key: true|
-|nickname|string|null: false, foreign_key: true|
+|name|string|null: false,|
+|nickname|string|null: false,|
 |email|string|null: false, unique: true|
-
-### Association
-- has_many :group
-- has_many :messages
-
-
-## messagesテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|text|text|
-|image|string|
-|user_id|references|null: false, foreign_key: true|
-|group_id|references|null: false, foreign_key: true|
-
-### Association
-- belongs_to :group
-- belongs_to :user
 
 
 ## groupテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|group_id|references|null: false, foreign_key: true|
+|name|string|null: false, unique: true|
+|text|string|
+|image|string|
+
+## group_usersテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user|references|index: true, foreign_key: true|
+|group|references|ndex: true, foreign_key: true|
 
 
-### Association
-- belongs_to :group
-- belongs_to :user
+
+
+## Association
+
+#### user.rbファイル
+
+```
+class User < ApplicationRecord
+  has_many :groups, through: :group_users
+  has_many :group_users
+end
+```
+    
+#### group.rbファイル
+```
+class Group < ApplicationRecord
+    has_many :users, through: :group_users
+    has_many :group_users
+    accepts_nested_attributes_for :group_users
+end
+```
+
+
+#### group_user.rbファイル
+
+```
+class GroupUser < ApplicationRecord
+  belongs_to :user
+  belongs_to :group
+end
+```
