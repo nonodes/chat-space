@@ -46,6 +46,7 @@
 class User < ApplicationRecord
   has_many :groups, through: :group_users
   has_many :group_users
+  has_many :message
 end
 ```
     
@@ -54,6 +55,7 @@ end
 class Group < ApplicationRecord
     has_many :users, through: :group_users
     has_many :group_users
+    has_many :message
     accepts_nested_attributes_for :group_users
 end
 ```
@@ -65,5 +67,17 @@ end
 class GroupUser < ApplicationRecord
   belongs_to :user
   belongs_to :group
+  has_many :message
+  
+end
+
+```
+
+#### message.rbファイル
+
+```
+class message < ActiveRecord::Base
+  belongs_to :group              
+  belongs_to :user                
 end
 ```
