@@ -16,20 +16,29 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false, unique: true|
-|text|string|
-|image|string|
+
 
 ## group_usersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |user|references|index: true, foreign_key: true|
-|group|references|ndex: true, foreign_key: true|
+|group|references|index: true, foreign_key: true|
+
+
+## messageテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
+|text|text|
+|image|string|
 
 
 
 
-## Association
+## AssociationO
 
 #### user.rbファイル
 
