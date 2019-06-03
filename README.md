@@ -1,24 +1,79 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# DB設計
 
-Things you may want to cover:
+## usersテーブル
 
-* Ruby version
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false,|
+|email|string|null: false, unique: true|
 
-* System dependencies
 
-* Configuration
+## groupテーブル
 
-* Database creation
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false, unique: true|
 
-* Database initialization
 
-* How to run the test suite
+## group_usersテーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+|Column|Type|Options|
+|------|----|-------|
+|user|references|null: false, foreign_key: true|
+|group|references|null: false, foreign_key: true|
 
-* Deployment instructions
 
-* ...
+## messageテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
+|text|text|
+|image|string|
+
+
+
+
+## Association
+
+#### user.rbファイル
+
+```
+class User < ApplicationRecord
+  has_many :groups, through: :group_users
+  has_many :group_users
+  has_many :messages
+end
+```
+    
+#### group.rbファイル
+```
+class Group < ApplicationRecord
+    has_many :users, through: :group_users
+    has_many :group_users
+    has_many :messages
+    accepts_nested_attributes_for :group_users
+end
+```
+
+
+#### group_user.rbファイル
+
+```
+class GroupUser < ApplicationRecord
+  belongs_to :user
+  belongs_to :group
+end
+
+```
+
+#### message.rbファイル
+
+```
+class message < ActiveRecord::Base
+  belongs_to :group              
+  belongs_to :user                
+end
+```
