@@ -1,18 +1,55 @@
-.Header
-  .Header__logo
-    %aaa
-    .left-header
+.wrapper
 
+  = render 'layouts/side_bar'
 
-.Contents
-  .Contents__message
-    follow me!
-  =link_to "destroy.html.erb", class: "Contents__btn" do
-    = fa_icon 
-    Facebook
-  =link_to "Edit.html.erb", class: "Contents__btn" do
-    = fa_icon
-    Twitter
-  =link_to "Index.html.erb", class: "Contents__btn" do
-    = fa_icon
-    Instagram
+  .chat
+    .header
+      .left-header
+        .left-header__title
+          グループ名
+        %ul.left-header__members
+          Member:
+          %Li.member
+            メンバー名
+          %Li.member
+            メンバー名
+          %Li.member
+          メンバー名
+      .right-header
+        .right-header__button
+          Edit
+    .messages
+      .message
+        .upper-message
+          .upper-message__user-name
+            メンバー
+          .upper-message__date
+            2017/04/04
+        .lower-message
+          .lower-message__content
+            メッセージ
+      .message
+        .upper-message
+          .upper-message__user-name
+            メンバー
+          .upper-message__date
+            2017/04/04
+        .lower-message
+          .lower-message__content
+            メッセージ
+      .message
+        .upper-message
+          .upper-message__user-name
+            メンバー
+          .upper-message__date
+            2017/04/04
+        .lower-meesage
+          .lower-message__content
+            メッセージ
+    .form
+      %form
+        %input.form__message
+        .form__mask
+          %label.form__mask__image
+            = fa_icon 'picture-o', class: 'icon'
+            %input.hidden{type: 'file'}
