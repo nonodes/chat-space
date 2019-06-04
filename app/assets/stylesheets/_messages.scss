@@ -1,0 +1,32 @@
+@import url("application/messages");
+.Header {
+  height: 100px;
+  padding: 0 40px;
+  border-top:20px solid #38AEF0;
+  background-color:white;
+  .left-header {
+    float: left;
+    color: #333;
+    
+  }
+
+
+  color:black;
+  &__logo {
+    text-align: center;
+    font-size: 36px;
+    line-height: 90px;
+  }
+}
+.Contents {
+  height: calc(100vh - 90px - 20px);
+  width:900px;
+  margin: 0 auto;
+  background-color:#fafafa;
+  &__message{
+    padding: 40px;
+    color:#ffa500;
+    font-size:30px;
+    text-align: center;
+  }
+}

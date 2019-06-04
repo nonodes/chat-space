@@ -13,7 +13,8 @@
  *= require_tree .
  *= require_self
  */
+ 
  @import "reset";
  @import "font-awesome";
- @import "messages/messages.scss";
- @import "colors";
+ @import "messages.scss";
+ 

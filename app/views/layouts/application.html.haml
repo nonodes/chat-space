@@ -7,24 +7,6 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     %body
-      .flash-box
-      .wrapper
-      .chat-side
-      .side-header
-      .side-header__box
-      %p.side-header__box__user-name
-    %ul
-      %li.side-header__box__menu__new-group
-      %a.{:hrefv=> "/groups/new"}
-      %li.side-header__box__menu__edit-use
-      %a.{:hrefv=> "/users/28/edit"}
-  
-      %div.groups
-        %a.{:hrefv=>"/groups/34/messages"}
-        %p.group__latest-message.aaaa
-        %a.{:href=> ss"/groups/33/messages"}
-        %p.group__group-name.aaaaaaaa
-        %p.group__latest-messag.aaaaaaaaaaa
-    
+      
 
     = yield

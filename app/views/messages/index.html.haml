@@ -1,23 +1,18 @@
-.wrapper
-
-  = %render 'shared/side_bar'
-
-.chat-side
-  .header
-    .left_header
-      .left-header__title
+.Header
+  .Header__logo
+    %aaa
+    .left-header
 
 
-     
-
-    
-
-
-
-
-
-
-
-
-
-
+.Contents
+  .Contents__message
+    follow me!
+  =link_to "destroy.html.erb", class: "Contents__btn" do
+    = fa_icon 
+    Facebook
+  =link_to "Edit.html.erb", class: "Contents__btn" do
+    = fa_icon
+    Twitter
+  =link_to "Index.html.erb", class: "Contents__btn" do
+    = fa_icon
+    Instagram
