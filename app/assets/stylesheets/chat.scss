@@ -81,7 +81,7 @@ $light_blue: #38AEF0;
     padding: 20px 50px 20px 40px;
     &__message {
       border: none;
-      flort: left;
+      float: left;
       height: 50px;
       width: calc(100% - 150px);
     }
@@ -99,7 +99,7 @@ $light_blue: #38AEF0;
       }
     }
     &__submit {
-      background-clor: $light_blue;
+      background-color: $light_blue;
       border: none;
       color: $white;
       float: right;
