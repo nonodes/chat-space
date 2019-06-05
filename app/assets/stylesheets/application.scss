@@ -14,8 +14,11 @@
  *= require_self
  */
  
- @import "reset";
- @import "font-awesome";
- @import "chat.scss";
- @import "messages.scss";
+ @import "./side_bar";
+ @import "./colors";
+ @import "./messages";
+ @import "./reset";
+ @import "./variable";
+ @import "./chat.scss";
+ @import "./font-size";
  
