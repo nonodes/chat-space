@@ -3,12 +3,12 @@
  */
  
  @import "./reset";
+ @import "./mixin.scss";
  @import "./vendor_prefix";
- @import "./side_bar";
  @import "./colors";
+ @import "./side_bar";
+ @import "./font-size";
  @import "./messages";
  @import "./chat.scss";
- @import "./font-size";
- @import "./mixin.scss";
 
  
