@@ -6,10 +6,12 @@
  @import "./mixin.scss";
  @import "./vendor_prefix";
  @import "./colors";
+ @import "./flash.scss";
  @import "./font-size";
  @import "./side_bar";
  @import "./chat.scss";
- @import "./user";
+ @import "./users";
+ @import "./group";
  @import "./messages";
 
  
