@@ -12,10 +12,10 @@
           margin-top: 35px;
         } 
         &__members {
-          color: #999;
-          display: flex;
+          @include flexbox;
+          color: $light_gray;
           font-size: 12px;
-        margin-top: 15px;
+          margin-top: 15px;
         .member {
           display: inline-block;
           padding-right: 5px;
@@ -30,8 +30,10 @@
       line-height: 40px;
       margin-top: 28px;
       padding: 0 20px;
-      border: solid; 
-
+      &__button {
+        color: $light_blue;
+        text-decoration: none;
+      }
     }
   }
 
@@ -44,12 +46,12 @@
       .upper-message {
         display: flex;
         &__user-name {
-          clor: #434a54;
+          clor: $black;
           font-size: 16px;
           font-weight: bold;
         }
         &__date {
-          color: #999;
+          color: $light_gray;
           font-size: 12px;
           padding-left: 10px;
         }
@@ -57,7 +59,7 @@
       .lower-message {
         margin-top: 10px;
         &__content {
-          columns: #434a54;
+          color: $black;
           font-size: 14px;
           margin-bottom: 40px;
         }
