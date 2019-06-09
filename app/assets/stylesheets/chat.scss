@@ -74,9 +74,10 @@
     padding: 20px 50px 20px 40px;
     &__message {
       border: none;
-      float: left;
+      float: left; 
       height: 50px;
-      width: calc(100% - 150px);
+      width: calc(100% - 160px);
+      padding-left: 10px;
     }
     &__mask {
       background-color: $white;
