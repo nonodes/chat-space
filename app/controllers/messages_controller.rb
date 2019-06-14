@@ -8,13 +8,13 @@ class MessagesController < ApplicationController
 
   def create
     @message = @group.messages.new(message_params)
-    if @message.save
+   if @message.save
       respond_to do |format|
-				format.html { redirect_to :action => :"index"}
-				format.json
-			end
-		else
-			render :index
+         format.html { redirect_to :action => :"index"}
+         format.json
+        end
+      else
+        render :index
     end
   end
 
@@ -28,6 +28,5 @@ class MessagesController < ApplicationController
     @group = Group.find(params[:group_id])
   end
 end
-
 
 
