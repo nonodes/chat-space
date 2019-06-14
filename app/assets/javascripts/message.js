@@ -2,6 +2,7 @@ $(function(){
 	
 	
 	function buildPost(message){
+		// console.log(message.image.url)
 		var html = `<div class="message">
 									<div class="upper-message">
 										<div class="upper-message__user-name">
@@ -14,6 +15,9 @@ $(function(){
 									<div class="lower-message">
 										<p class="lower-message__content">
 										${message.text}
+										<p class="lower-message__image">
+										<img src=${message.image.url} alt=${message.image}>
+								
 										</p>
 									</div>
 								</div>`
@@ -28,8 +32,7 @@ $(function(){
 		// console.log("hellow");
 		var url = $(this).attr('action');
 		$(`#new_message`)[0].reset();
-
-
+		
 		$.ajax({
 			url: url,
 			type: "POST",
@@ -41,8 +44,17 @@ $(function(){
 		.done(function(message){
 			var html = buildPost(message);
 			$(`.messages`).append(html);
-			// $(`#new`).val('');
-			// console.log("555")
+
+			$(function(){
+				
+				var movefun = function(event){
+					event.preventDefault();
+				}
+			
+
+    body.animate({
+      scrollTop: scroll_point
+    }, 300);
 
 		})
 		.fail(function(message){
