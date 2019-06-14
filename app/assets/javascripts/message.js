@@ -18,15 +18,14 @@ $(function(){
                     <p class="lower-message__content">
                     ${message.text}
                     <p class="lower-message__image">
-										${image} 
-                
+　　　　　　　　　　　　${image}             
                     </p>
                   </div>
                 </div>`
     return html;
   }
 
-  $('#new_message').on('submit',function(e){
+  $(`#new_message`).on('submit',function(e){
     e.preventDefault();
     var formData = new FormData(this);
     
@@ -46,8 +45,10 @@ $(function(){
 			$(`.messages`).append(html);
 		})
     .fail(function(message){
-      alert('エラー');
-
+			alert('エラー');
 		})
+		.always(() => {
+			$(".form__submit").removeAttr("disabled");
+			});
 	});
 });
