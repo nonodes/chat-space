@@ -1,8 +1,10 @@
 $(function(){
-  
-  
-  function buildPost(message){
-    
+
+	
+	
+	function buildPost(message){
+		var image = message.image ? image = `<img src="${message.image}">` : image = ""
+		
     var html = `<div class="message">
                   <div class="upper-message">
                     <div class="upper-message__user-name">
@@ -16,13 +18,11 @@ $(function(){
                     <p class="lower-message__content">
                     ${message.text}
                     <p class="lower-message__image">
-                    <img src=${message.image.url} alt=${message.image}>
+										${image} 
                 
                     </p>
                   </div>
                 </div>`
-
-
     return html;
   }
 
@@ -32,7 +32,7 @@ $(function(){
     
     var url = $(this).attr('action');
     $(`#new_message`)[0].reset();
-    
+    console.log(url)
     $.ajax({
       url: url,
       type: "POST",
@@ -43,25 +43,11 @@ $(function(){
     })
     .done(function(message){
       var html = buildPost(message);
-      $(`.messages`).append(html);
-
-      $(function(){
-        
-        var movefun = function(event){
-          event.preventDefault();
-        }
-      
-
-    body.animate({
-      scrollTop: scroll_point
-    }, 300);
-
-    })
+			$(`.messages`).append(html);
+		})
     .fail(function(message){
       alert('エラー');
 
-    })
-  })
+		})
+	});
 });
-
-
