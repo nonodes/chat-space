@@ -33,7 +33,7 @@ $(function(){
     
     var url = $(this).attr('action');
     $('#new_message')[0].reset();
-    console.log(url)
+    
     $.ajax({
       url: url,
       type: "POST",
