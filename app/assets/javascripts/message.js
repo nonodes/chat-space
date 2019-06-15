@@ -5,7 +5,7 @@ $(function(){
   function buildPost(message){
   
     var image = message.image ? `<img src="${message.image}">` : ""
-    // var image = message.image ? image = `<img src="${message.image}">` : image = ""
+    
     
     var html = `<div class="message">
                   <div class="upper-message">
@@ -46,7 +46,7 @@ $(function(){
       var html = buildPost(message);
       $('.messages').append(html);
       $('.messages').animate({scrollTop:$('.messages')[0].scrollHeight}, 'fast');
-      // $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+      
     })
   
     .always(function(){
