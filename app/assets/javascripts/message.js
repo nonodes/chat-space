@@ -1,10 +1,10 @@
 $(function(){
 
-	
-	
-	function buildPost(message){
-		var image = message.image ? image = `<img src="${message.image}">` : image = ""
-		
+  
+  
+  function buildPost(message){
+    var image = message.image ? image = `<img src="${message.image}">` : image = ""
+    
     var html = `<div class="message">
                   <div class="upper-message">
                     <div class="upper-message__user-name">
@@ -42,13 +42,14 @@ $(function(){
     })
     .done(function(message){
       var html = buildPost(message);
-			$(`.messages`).append(html);
-		})
-    .fail(function(message){
-			alert('エラー');
-		})
-		.always(() => {
-			$(".form__submit").removeAttr("disabled");
-			});
-	});
+      $(`.messages`).append(html);
+    })
+    .always(function(){
+      $(".form__submit").removeAttr("disabled");
+    })
+    .fail(function(){
+      alert('エラー');
+    })
+  });
 });
+
