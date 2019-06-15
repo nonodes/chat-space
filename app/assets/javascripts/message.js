@@ -5,6 +5,7 @@ $(function(){
   function buildPost(message){
   
     var image = message.image ? `<img src="${message.image}">` : ""
+    // var image = message.image ? image = `<img src="${message.image}">` : image = ""
     
     var html = `<div class="message">
                   <div class="upper-message">
@@ -26,12 +27,12 @@ $(function(){
     return html;
   }
 
-  $(`#new_message`).on('submit',function(e){
+  $('#new_message').on('submit',function(e){
     e.preventDefault();
     var formData = new FormData(this);
     
     var url = $(this).attr('action');
-    $(`#new_message`)[0].reset();
+    $('#new_message')[0].reset();
     console.log(url)
     $.ajax({
       url: url,
@@ -43,11 +44,15 @@ $(function(){
     })
     .done(function(message){
       var html = buildPost(message);
-      $(`.messages`).append(html);
+      $('.messages').append(html);
+      $('.messages').animate({scrollTop:$('.messages')[0].scrollHeight}, 'fast');
+      // $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
     })
+  
     .always(function(){
       $(".form__submit").removeAttr("disabled");
     })
+
     .fail(function(){
       alert('エラー');
     })
