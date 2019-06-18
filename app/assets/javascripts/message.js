@@ -45,7 +45,7 @@ $(function(){
       $('.messages').animate({scrollTop:$('.messages')[0].scrollHeight}, 'fast');   
     })
     .always(function(){
-			$(".form__submit").removeAttr("disabled");
+		  $(".form__submit").removeAttr("disabled");
     })
     .fail(function(){
       alert('エラー');
@@ -91,4 +91,5 @@ $(function(){
   setInterval(update, 3000);
 
 })
+
 
