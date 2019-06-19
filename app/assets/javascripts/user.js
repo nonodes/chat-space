@@ -14,10 +14,10 @@ $(function () {
 
   }
 
-  function appendpost(name) {
+  function appendpost(name,id) {
 
     var html = `<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-8'>
-                  <input name='group[user_ids][]' type='hidden' value='ユーザーのid'>
+                  <input name='group[user_ids][]' type='hidden' value='${id}'>
                   <p class='chat-group-user__name'>${name}</p>
                   <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
                 </div>`
@@ -25,7 +25,13 @@ $(function () {
 
   }
 
-  $(".chat-group-form__input").on("keyup", function () {
+  $(".chat-group-form__input").on("keyup", function (event) {
+    // バックスペースの時はajaxを走らせない
+    if (event.key == "Backspace") {
+      $("#user-search-result").empty(); 
+      return false;
+    }
+    
     var input = $(this).val();
 
 
@@ -38,7 +44,7 @@ $(function () {
 
 
     .done(function (users) {
-      $(".chat-group-form__input").empty();
+      $("#user-search-result").empty();
       if (users.length !== 0) {
         users.forEach(function (user) {
           appendProduct(user);
@@ -57,11 +63,12 @@ $(function () {
   $(document).on("click",".user-search-add" ,function () {
     //追加ボタンをクリックされたら、チャットメンバーのviewに追加したいuserが追加される。
     // 追加ボタンを押された所の名前が必要。
-    var name = $(this).data('user-name')
-    console.log(this)
-    var html = appendpost(name)
+    var name = $(this).data('user-name');
+    var id = $(this).data('user-id');
+    var html = appendpost(name,id);
     $('#chat-group-users').append(html);
     //検索したてんらさんを削除したい。 
+    
     $('#user-search-result').empty();
   })
   $(document).on("click",".user-search-remove" ,function () {
