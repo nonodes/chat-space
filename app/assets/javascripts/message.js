@@ -67,13 +67,13 @@ $(function(){
       })
       .done(function(messages) {
           
-          messages.forEach(function(message){
+        messages.forEach(function(message){
           
           var html = buildPost(message);
           $('.messages').append(html);
         
         })
-        if (messages.lenght>0){
+        if (messages.length>0){
           $('.messages').animate({scrollTop:$('.messages')[0].scrollHeight}, 'fast');
         }
       
