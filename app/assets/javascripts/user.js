@@ -16,7 +16,7 @@ $(function () {
 
   function appendpost(name,id) {
 
-    var html = `<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-8'>
+    var html = `<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-${id}'>
                   <input name='group[user_ids][]' type='hidden' value='${id}'>
                   <p class='chat-group-user__name'>${name}</p>
                   <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
@@ -25,6 +25,14 @@ $(function () {
 
   }
 
+  function appendErrMsgToHTML() {
+  
+    var html = `<div class="chat-group-user clearfix">
+    <p class="chat-group-user__name">一致する名前はありません</p>
+    </div>`
+      return html;
+
+  }
   $(".chat-group-form__input").on("keyup", function (event) {
     // バックスペースの時はajaxを走らせない
     if (event.key == "Backspace") {
@@ -47,11 +55,11 @@ $(function () {
       $("#user-search-result").empty();
       if (users.length !== 0) {
         users.forEach(function (user) {
-          appendProduct(user);
+        appendProduct(user);
         });
       }
       else {
-        appendErrMsgToHTML("一致する名前はありません");
+      $('#user-search-result').append(appendErrMsgToHTML());
       }
 
     })
